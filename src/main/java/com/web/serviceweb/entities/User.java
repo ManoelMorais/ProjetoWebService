@@ -1,5 +1,6 @@
 package com.web.serviceweb.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,6 +27,7 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
+    @JsonIgnore
     @Getter
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
@@ -33,11 +35,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long id, String name, String email, String phone, String password) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.password = password;
-    }
+     public User(Long id, String name, String email, String phone, String password) {
+          this.id = id;
+          this.name = name;
+          this.email = email;
+          this.phone = phone;
+          this.password = password;
+     }
 }
